@@ -1,0 +1,5 @@
+#! /bin/bash
+
+cd /thermostat/bin/
+python ThermoData.py getWeatherForecast
+echo "getWeatherForcast script ran: $(date)" >> /thermostat/logs/forecast_cron.log

@@ -1,0 +1,19 @@
+{% if listOfEvents %}
+    <ul>
+    {% for event in listOfEvents %}
+        <a href ="{ % url 'ThermoApp:historicinterface' event.id %}" target="_blank">{{ event.hs_startdatetime }}
+            </a>
+            Temp: {{ event.hs_currenttemp }} </p>
+            Desired Temp: {{ event.hs_destemp }} </p>
+            Humidity: {{ event.hs_humidity }} </p>
+            Fan Mode: {{ event.hs_fanmode }} </p>
+            
+    {% endfor %}
+    </ul>
+{% else %}
+    <p> No historic data is available.</p>
+{% endif %}
+
+
+<!-- <a href ="/thermostat/historicinterface/{{ event.id }}/" target="_blank"> -->
+<!--<a href ="{ % url 'historicinterface' event.id %}" target="_blank"> -->

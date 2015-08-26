@@ -1,0 +1,37 @@
+{% if realTimeData %}
+ 
+
+		<h1> {{ data.rt_datetime }} </h1>
+		{% if error_message %} <p><strong>{{ error_message}} </strong></p> {% endif %}
+
+{% for data in realTimeData %}
+
+
+    <form action="{% url 'ThermoApp:updatetemp' data.id %}" method="post">
+    {% csrf_token %}
+        <label for="Value">Desired Temp: </label>
+        <input type="number" name="DesiredTemp" id="DesiredTemp" min="60" max="90", value= {{ data.rt_destemp }}>
+        <p>Current Temperature: {{ data.rt_currenttemp }} </p>
+        <p>Humidity: {{ data.rt_humidity }} </p>
+        <label for="Value">Fan Mode: </label>
+        <select name="FanMode" value ="Auto" >
+          <option value="Default">{{ data.rt_fanmode }}</option>
+          <option value="Heat">Heat</option>
+          <option value="Cool">Cool</option>
+          <option value="Fan">Fan</option>
+          <option value="Auto">Auto</option>
+          <option value="Off">Off</option>
+        </select>
+        <p>Outside Temperature: {{ data.rt_outsidetemp }}</p>
+        <p>Outside Humidity: {{ data.rt_outsidehumidity }}</p>
+        <p>Weather Forecast: {{ data.rt_forecast  }}</p>
+        <p>Fan Run Time: {{ data.rt_runtime }}</p>
+        <P>System Up Time: {{ data.rt_uptime }}</p>
+        <input type="submit" value="Submit" />
+        
+    </form>
+
+    {% endfor %}
+{% else %}
+    <p> Sorry, no real time data is available!</p>
+{% endif %}

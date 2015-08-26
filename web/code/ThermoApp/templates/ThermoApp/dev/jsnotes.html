@@ -1,0 +1,38 @@
+<!-- Some notes while learning java script -->
+
+<!-- This tells django to use the static files path from the 
+	  setting.py-->
+{% load staticfiles %}
+
+<h1>JavaScript can validate input yo</h1>
+
+<p>Please enter a number between 1 and 10:</p>
+
+<input id='numb' type='number'>
+
+<button type='button'
+			onclick='myFunction()'>
+			myFunction</button>
+
+<p id='demo'></p>
+
+
+<!-- This refers to the static files path and serves 
+	 content from the specified path whic is currently 
+	 an external java script file.-->
+<script src={% static "dev/test.js" %}>
+
+</script>
+
+<!-- This is some code that leverage d3 java script 
+	 library for data visualization-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8">
+//includes the d3js library. 
+</script>
+
+<script>
+//creates and manipulates some elements with d3
+	var body = d3.select("body");
+	var div = body.append("div");
+	div.html("Hello,d3js!");
+</script>

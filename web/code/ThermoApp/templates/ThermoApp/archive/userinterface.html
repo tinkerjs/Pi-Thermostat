@@ -1,0 +1,36 @@
+{% if realTimeData %}
+    <table border="1" style="width:0%">
+    {% for data in realTimeData %}
+        <tr>
+            <th>Date/Time</th>
+            <th>Current Temperature</th>
+            <th>Desired Temperature</th>
+            <th>Humidity</th>
+            <th>Fan Mode</th>
+        </tr>
+        <tr>
+            <td>{{ data.rt_datetime }} </td>
+            <td>{{ data.rt_currenttemp }} </td> 
+            <td>{{ data.rt_destemp }} </td>
+            <td>{{ data.rt_humidity }} </td>
+            <td>{{ data.rt_fanmode }} </td>
+         </tr>
+        <tr>
+            <th>Outside Temperature</th>
+            <th>Outside Humidity</th>
+            <th>Weather Forecast</th>
+            <th>Fan Run Time</th>
+            <th>System Up Time</th>
+        </tr>
+         <tr>
+            <td>{{ data.rt_outsidetemp }} </td>
+            <td>{{ data.rt_outsidehumidity }} </td>
+            <td>{{ data.rt_forecast  }} </td>
+            <td>{{ data.rt_runtime }} </td>
+            <td>{{ data.rt_uptime }} </td>
+        </tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <p> Sorry, no real time data is available!</p>
+{% endif %}

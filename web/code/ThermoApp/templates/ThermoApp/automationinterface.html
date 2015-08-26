@@ -1,0 +1,16 @@
+{% if automationData %}
+    <ul>
+    {% for data in automationData %}
+        <li>
+            {{ data.am_datetime }}
+            {{ data.am_dayofweek }}
+            {{ data.am_temp }}
+            {{ data.am_fanmode }}
+            {{ data.am_forecastdur }}
+        </li>
+            
+    {% endfor %}
+    </ul>
+{% else %}
+    <p> No automation data is available.</p>
+{% endif %}

@@ -1,0 +1,53 @@
+2015-07-12 22:43:25,412 - django.db.backends - DEBUG - (0.014) QUERY = u'SELECT "ThermoApp_realtimedata"."id", "ThermoApp_realtimedata"."date_time", "ThermoApp_realtimedata"."rt_datetime", "ThermoApp_realtimedata"."rt_currenttemp", "ThermoApp_realtimedata"."rt_destemp", "ThermoApp_realtimedata"."rt_humidity", "ThermoApp_realtimedata"."rt_fanmode", "ThermoApp_realtimedata"."rt_outsidetemp", "ThermoApp_realtimedata"."rt_outsidehumidity", "ThermoApp_realtimedata"."rt_forecast", "ThermoApp_realtimedata"."rt_runtime", "ThermoApp_realtimedata"."rt_uptime" FROM "ThermoApp_realtimedata" WHERE "ThermoApp_realtimedata"."id" = %s LIMIT 21' - PARAMS = (0,); args=(0,)
+2015-07-12 22:43:25,433 - root - ERROR - Exception Occurred in ThermoData(getRealtimeData.
+Traceback (most recent call last):
+  File "<ipython-input-2-6cd7566ab94b>", line 3, in getRealtimeData
+    dataQuery = RTdata.objects.get(pk=0)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/manager.py", line 92, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 357, in get
+    self.model._meta.object_name)
+DoesNotExist: RealtimeData matching query does not exist.
+2015-07-12 22:44:08,256 - django.db.backends - DEBUG - (0.002) QUERY = u'SELECT "ThermoApp_realtimedata"."id", "ThermoApp_realtimedata"."date_time", "ThermoApp_realtimedata"."rt_datetime", "ThermoApp_realtimedata"."rt_currenttemp", "ThermoApp_realtimedata"."rt_destemp", "ThermoApp_realtimedata"."rt_humidity", "ThermoApp_realtimedata"."rt_fanmode", "ThermoApp_realtimedata"."rt_outsidetemp", "ThermoApp_realtimedata"."rt_outsidehumidity", "ThermoApp_realtimedata"."rt_forecast", "ThermoApp_realtimedata"."rt_runtime", "ThermoApp_realtimedata"."rt_uptime" FROM "ThermoApp_realtimedata" WHERE "ThermoApp_realtimedata"."id" = %s LIMIT 21' - PARAMS = (0,); args=(0,)
+2015-07-12 22:44:08,283 - root - ERROR - Exception Occurred in ThermoData getRealtimeData()
+Traceback (most recent call last):
+  File "<ipython-input-7-43750fccc908>", line 3, in getRealtimeData
+    dataQuery = RTdata.objects.get(pk=0)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/manager.py", line 92, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 357, in get
+    self.model._meta.object_name)
+DoesNotExist: RealtimeData matching query does not exist.
+2015-07-12 22:45:00,868 - django.db.backends - DEBUG - (0.002) QUERY = u'SELECT "ThermoApp_realtimedata"."id", "ThermoApp_realtimedata"."date_time", "ThermoApp_realtimedata"."rt_datetime", "ThermoApp_realtimedata"."rt_currenttemp", "ThermoApp_realtimedata"."rt_destemp", "ThermoApp_realtimedata"."rt_humidity", "ThermoApp_realtimedata"."rt_fanmode", "ThermoApp_realtimedata"."rt_outsidetemp", "ThermoApp_realtimedata"."rt_outsidehumidity", "ThermoApp_realtimedata"."rt_forecast", "ThermoApp_realtimedata"."rt_runtime", "ThermoApp_realtimedata"."rt_uptime" FROM "ThermoApp_realtimedata" WHERE "ThermoApp_realtimedata"."id" = %s LIMIT 21' - PARAMS = (0,); args=(0,)
+2015-07-12 22:45:00,904 - root - ERROR - Exception Occurred in ThermoData getRealtimeData()
+Traceback (most recent call last):
+  File "<ipython-input-13-43750fccc908>", line 3, in getRealtimeData
+    dataQuery = RTdata.objects.get(pk=0)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/manager.py", line 92, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 357, in get
+    self.model._meta.object_name)
+DoesNotExist: RealtimeData matching query does not exist.
+2015-07-12 22:51:18,876 - django.db.backends - DEBUG - (0.002) QUERY = u'SELECT "ThermoApp_realtimedata"."id", "ThermoApp_realtimedata"."date_time", "ThermoApp_realtimedata"."rt_datetime", "ThermoApp_realtimedata"."rt_currenttemp", "ThermoApp_realtimedata"."rt_destemp", "ThermoApp_realtimedata"."rt_humidity", "ThermoApp_realtimedata"."rt_fanmode", "ThermoApp_realtimedata"."rt_outsidetemp", "ThermoApp_realtimedata"."rt_outsidehumidity", "ThermoApp_realtimedata"."rt_forecast", "ThermoApp_realtimedata"."rt_runtime", "ThermoApp_realtimedata"."rt_uptime" FROM "ThermoApp_realtimedata" WHERE "ThermoApp_realtimedata"."id" = %s LIMIT 21' - PARAMS = (0,); args=(0,)
+2015-07-12 22:51:18,907 - root - ERROR - Exception Occurred in ThermoData getRealtimeData()
+Traceback (most recent call last):
+  File "<ipython-input-19-43750fccc908>", line 3, in getRealtimeData
+    dataQuery = RTdata.objects.get(pk=0)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/manager.py", line 92, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 357, in get
+    self.model._meta.object_name)
+DoesNotExist: RealtimeData matching query does not exist.
+2015-07-12 22:52:09,464 - django.db.backends - DEBUG - (0.013) QUERY = u'SELECT "ThermoApp_realtimedata"."id", "ThermoApp_realtimedata"."date_time", "ThermoApp_realtimedata"."rt_datetime", "ThermoApp_realtimedata"."rt_currenttemp", "ThermoApp_realtimedata"."rt_destemp", "ThermoApp_realtimedata"."rt_humidity", "ThermoApp_realtimedata"."rt_fanmode", "ThermoApp_realtimedata"."rt_outsidetemp", "ThermoApp_realtimedata"."rt_outsidehumidity", "ThermoApp_realtimedata"."rt_forecast", "ThermoApp_realtimedata"."rt_runtime", "ThermoApp_realtimedata"."rt_uptime" FROM "ThermoApp_realtimedata" WHERE "ThermoApp_realtimedata"."id" = %s LIMIT 21' - PARAMS = (1,); args=(1,)
+2015-07-12 22:53:29,894 - root - ERROR - Exception Occurred in ThermoData updateRealtimeData().
+Traceback (most recent call last):
+  File "<ipython-input-26-b3862dca1533>", line 3, in updateRealTimeData
+    queryset.rt_datetime = timezone.nowp()
+AttributeError: 'module' object has no attribute 'nowp'
+2015-07-12 23:39:12,073 - root - INFO - 100: ***************Thermostat Data is starting************
+2015-07-12 23:39:12,117 - root - INFO - 101: Django setup is complete
+2015-07-13 00:15:32,879 - root - INFO - 100: ***************Thermostat Data is starting************
+2015-07-13 00:15:32,925 - root - INFO - 101: Configuration is complete
+2015-07-13 00:15:46,479 - py.warnings - WARNING - /usr/local/lib/python2.7/dist-packages/django/db/backends/sqlite3/base.py:63: RuntimeWarning: SQLite received a naive datetime (2015-07-13 00:15:46.474674) while time zone support is active.
+  RuntimeWarning)
+

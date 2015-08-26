@@ -1,0 +1,714 @@
+2015-07-15 22:50:31,037 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-07-15 22:50:31,136 - ThermoHardware - INFO - 101: Configuration complete
+2015-07-15 22:52:49,202 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-07-15 22:52:49,310 - ThermoHardware - INFO - 101: Configuration complete
+2015-07-16 22:41:10,251 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-4-554c2cea54ec>", line 16, in <module>
+    time.sleep(refreshCycle) # delay for 20 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-07-16 22:41:10,326 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-07-16 22:41:10,346 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-07-16 22:42:46,594 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-3-a364f850c35d>", line 46, in controlHVAC
+    GPIO.output(heat_pin ,0)
+RuntimeError: The GPIO channel has not been set up as an OUTPUT
+2015-07-16 22:42:53,589 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-5-554c2cea54ec>", line 16, in <module>
+    time.sleep(refreshCycle) # delay for 20 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-07-16 22:42:53,622 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-07-16 22:42:53,686 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-07-16 22:43:37,450 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-07-16 22:43:37,510 - ThermoHardware - INFO - 101: Configuration complete
+2015-07-20 21:48:46,354 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-07-20 21:48:46,388 - ThermoHardware - INFO - 101: Configuration complete
+2015-07-21 23:06:31,339 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-07-21 23:06:31,412 - ThermoHardware - INFO - 101: Configuration complete
+2015-07-22 11:41:49,891 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware getHwInfo
+Traceback (most recent call last):
+  File "<ipython-input-3-a364f850c35d>", line 5, in getHwInfo
+    return round(humidity,2), round((temperature * 9/5 + 32),2)
+TypeError: a float is required
+2015-07-22 11:41:49,905 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-4-554c2cea54ec>", line 4, in <module>
+    hwHumidity, hwTemp = getHwInfo()
+TypeError: 'NoneType' object is not iterable
+2015-07-22 11:41:49,916 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-07-22 11:41:49,927 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-07-22 15:40:02,988 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-07-22 15:40:03,033 - ThermoHardware - INFO - 101: Configuration complete
+2015-07-22 16:54:35,936 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-07-22 16:54:35,945 - ThermoHardware - INFO - 101: Configuration complete
+2015-07-22 17:03:11,217 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-07-22 17:03:11,227 - ThermoHardware - INFO - 101: Configuration complete
+2015-07-22 22:07:25,632 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-07-22 22:07:25,649 - ThermoHardware - INFO - 101: Configuration complete
+2015-07-22 23:22:06,344 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-07-22 23:22:06,347 - ThermoHardware - INFO - 101: Configuration complete
+2015-07-22 23:34:22,392 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-07-22 23:34:22,426 - ThermoHardware - INFO - 101: Configuration complete
+2015-07-22 23:35:56,248 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-07-22 23:35:56,274 - ThermoHardware - INFO - 101: Configuration complete
+2015-07-22 23:37:45,020 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-07-22 23:37:45,036 - ThermoHardware - INFO - 101: Configuration complete
+2015-07-22 23:40:08,968 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-07-22 23:40:08,996 - ThermoHardware - INFO - 101: Configuration complete
+2015-07-22 23:42:34,940 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-07-22 23:42:34,954 - ThermoHardware - INFO - 101: Configuration complete
+2015-07-22 23:43:12,944 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware getHwInfo
+Traceback (most recent call last):
+  File "/thermostat/bin/ThermoHardware.py", line 81, in getHwInfo
+    return round(humidity,2), round((temperature * 9/5 + 32),2)
+TypeError: a float is required
+2015-07-22 23:43:12,948 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "/thermostat/bin/ThermoHardware.py", line 161, in <module>
+    hwHumidity, hwTemp = getHwInfo()
+TypeError: 'NoneType' object is not iterable
+2015-07-22 23:43:12,950 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-07-22 23:43:12,952 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-07-22 23:45:12,443 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-07-22 23:45:12,466 - ThermoHardware - INFO - 101: Configuration complete
+2015-07-24 22:05:22,444 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-07-24 22:05:22,447 - ThermoHardware - INFO - 101: Configuration complete
+2015-07-27 22:12:34,316 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-07-27 22:12:34,323 - ThermoHardware - INFO - 101: Configuration complete
+2015-07-27 22:14:01,448 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-07-27 22:14:01,482 - ThermoHardware - INFO - 101: Configuration complete
+2015-07-28 22:21:42,313 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-07-28 22:21:42,341 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-01 21:32:05,587 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-01 21:32:05,624 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-03 11:48:11,069 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-03 11:48:11,075 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-03 13:04:50,393 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-03 13:04:50,426 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-03 13:16:16,557 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-03 13:16:16,591 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-03 13:38:22,442 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-03 13:38:22,493 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-03 13:56:33,773 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-03 13:56:33,787 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-03 14:19:03,563 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-03 14:19:03,577 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-03 14:31:46,338 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-03 14:31:46,361 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-03 14:38:33,555 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-03 14:38:33,583 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-03 15:46:20,072 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-03 15:46:20,078 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-03 15:46:22,765 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-03 15:46:22,805 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-04 21:45:03,236 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-04 21:45:03,270 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-04 21:45:01,739 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-04 21:45:01,807 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-04 22:38:52,260 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-04 22:38:52,290 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-04 23:03:31,608 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-04 23:03:31,629 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-04 23:46:11,889 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-04 23:46:11,899 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-04 23:46:18,070 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "ThermoHardware.py", line 177, in <module>
+    time.sleep(refreshCycle) # delay for 20 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-04 23:46:18,073 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-04 23:46:18,077 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-04 23:46:55,624 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-04 23:46:55,626 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-05 00:09:30,514 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "ThermoHardware.py", line 177, in <module>
+    time.sleep(refreshCycle) # delay for 20 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-05 00:09:30,518 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-05 00:09:30,520 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-05 00:14:06,268 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-05 00:14:06,312 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-05 00:18:05,624 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-6-554c2cea54ec>", line 16, in <module>
+    time.sleep(refreshCycle) # delay for 20 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-05 00:18:05,653 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-05 00:18:05,678 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-05 00:21:13,286 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-05 00:21:13,295 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-08 08:19:52,988 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-08 08:19:53,012 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-08 21:41:34,293 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-08 21:41:34,462 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-08 21:46:13,227 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-4-0dd2d0a581c7>", line 53, in controlHVAC
+    if coolingHwStatus != 'On':
+UnboundLocalError: local variable 'coolingHwStatus' referenced before assignment
+2015-08-08 21:46:22,761 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-5-554c2cea54ec>", line 16, in <module>
+    time.sleep(refreshCycle) # delay for 20 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-08 21:46:22,784 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-08 21:46:22,825 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-08 21:46:59,191 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-08 21:46:59,191 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-08 21:46:59,230 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-08 21:46:59,230 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-08 22:10:00,932 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-8-0dd2d0a581c7>", line 60, in controlHVAC
+    if coolingHwStatus != 'Off':
+UnboundLocalError: local variable 'coolingHwStatus' referenced before assignment
+2015-08-08 22:10:00,932 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-8-0dd2d0a581c7>", line 60, in controlHVAC
+    if coolingHwStatus != 'Off':
+UnboundLocalError: local variable 'coolingHwStatus' referenced before assignment
+2015-08-08 22:10:21,617 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-8-0dd2d0a581c7>", line 60, in controlHVAC
+    if coolingHwStatus != 'Off':
+UnboundLocalError: local variable 'coolingHwStatus' referenced before assignment
+2015-08-08 22:10:21,617 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-8-0dd2d0a581c7>", line 60, in controlHVAC
+    if coolingHwStatus != 'Off':
+UnboundLocalError: local variable 'coolingHwStatus' referenced before assignment
+2015-08-08 22:10:42,321 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-8-0dd2d0a581c7>", line 60, in controlHVAC
+    if coolingHwStatus != 'Off':
+UnboundLocalError: local variable 'coolingHwStatus' referenced before assignment
+2015-08-08 22:10:42,321 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-8-0dd2d0a581c7>", line 60, in controlHVAC
+    if coolingHwStatus != 'Off':
+UnboundLocalError: local variable 'coolingHwStatus' referenced before assignment
+2015-08-08 22:11:05,588 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-8-0dd2d0a581c7>", line 60, in controlHVAC
+    if coolingHwStatus != 'Off':
+UnboundLocalError: local variable 'coolingHwStatus' referenced before assignment
+2015-08-08 22:11:05,588 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-8-0dd2d0a581c7>", line 60, in controlHVAC
+    if coolingHwStatus != 'Off':
+UnboundLocalError: local variable 'coolingHwStatus' referenced before assignment
+2015-08-08 22:11:26,409 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-8-0dd2d0a581c7>", line 60, in controlHVAC
+    if coolingHwStatus != 'Off':
+UnboundLocalError: local variable 'coolingHwStatus' referenced before assignment
+2015-08-08 22:11:26,409 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-8-0dd2d0a581c7>", line 60, in controlHVAC
+    if coolingHwStatus != 'Off':
+UnboundLocalError: local variable 'coolingHwStatus' referenced before assignment
+2015-08-08 22:11:47,088 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-8-0dd2d0a581c7>", line 60, in controlHVAC
+    if coolingHwStatus != 'Off':
+UnboundLocalError: local variable 'coolingHwStatus' referenced before assignment
+2015-08-08 22:11:47,088 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-8-0dd2d0a581c7>", line 60, in controlHVAC
+    if coolingHwStatus != 'Off':
+UnboundLocalError: local variable 'coolingHwStatus' referenced before assignment
+2015-08-08 22:12:07,767 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-8-0dd2d0a581c7>", line 60, in controlHVAC
+    if coolingHwStatus != 'Off':
+UnboundLocalError: local variable 'coolingHwStatus' referenced before assignment
+2015-08-08 22:12:07,767 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-8-0dd2d0a581c7>", line 60, in controlHVAC
+    if coolingHwStatus != 'Off':
+UnboundLocalError: local variable 'coolingHwStatus' referenced before assignment
+2015-08-08 22:12:30,957 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-8-0dd2d0a581c7>", line 60, in controlHVAC
+    if coolingHwStatus != 'Off':
+UnboundLocalError: local variable 'coolingHwStatus' referenced before assignment
+2015-08-08 22:12:30,957 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-8-0dd2d0a581c7>", line 60, in controlHVAC
+    if coolingHwStatus != 'Off':
+UnboundLocalError: local variable 'coolingHwStatus' referenced before assignment
+2015-08-08 22:12:54,247 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-8-0dd2d0a581c7>", line 60, in controlHVAC
+    if coolingHwStatus != 'Off':
+UnboundLocalError: local variable 'coolingHwStatus' referenced before assignment
+2015-08-08 22:12:54,247 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-8-0dd2d0a581c7>", line 60, in controlHVAC
+    if coolingHwStatus != 'Off':
+UnboundLocalError: local variable 'coolingHwStatus' referenced before assignment
+2015-08-08 22:13:14,932 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-8-0dd2d0a581c7>", line 60, in controlHVAC
+    if coolingHwStatus != 'Off':
+UnboundLocalError: local variable 'coolingHwStatus' referenced before assignment
+2015-08-08 22:13:14,932 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-8-0dd2d0a581c7>", line 60, in controlHVAC
+    if coolingHwStatus != 'Off':
+UnboundLocalError: local variable 'coolingHwStatus' referenced before assignment
+2015-08-08 22:13:35,649 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-8-0dd2d0a581c7>", line 60, in controlHVAC
+    if coolingHwStatus != 'Off':
+UnboundLocalError: local variable 'coolingHwStatus' referenced before assignment
+2015-08-08 22:13:35,649 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-8-0dd2d0a581c7>", line 60, in controlHVAC
+    if coolingHwStatus != 'Off':
+UnboundLocalError: local variable 'coolingHwStatus' referenced before assignment
+2015-08-08 22:13:56,320 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-8-0dd2d0a581c7>", line 60, in controlHVAC
+    if coolingHwStatus != 'Off':
+UnboundLocalError: local variable 'coolingHwStatus' referenced before assignment
+2015-08-08 22:13:56,320 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-8-0dd2d0a581c7>", line 60, in controlHVAC
+    if coolingHwStatus != 'Off':
+UnboundLocalError: local variable 'coolingHwStatus' referenced before assignment
+2015-08-08 22:14:17,034 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-8-0dd2d0a581c7>", line 60, in controlHVAC
+    if coolingHwStatus != 'Off':
+UnboundLocalError: local variable 'coolingHwStatus' referenced before assignment
+2015-08-08 22:14:17,034 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-8-0dd2d0a581c7>", line 60, in controlHVAC
+    if coolingHwStatus != 'Off':
+UnboundLocalError: local variable 'coolingHwStatus' referenced before assignment
+2015-08-08 22:14:29,453 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-9-554c2cea54ec>", line 16, in <module>
+    time.sleep(refreshCycle) # delay for 20 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-08 22:14:29,453 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-9-554c2cea54ec>", line 16, in <module>
+    time.sleep(refreshCycle) # delay for 20 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-08 22:14:29,477 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-08 22:14:29,477 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-08 22:14:29,505 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-08 22:14:29,505 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-08 22:14:35,653 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-10-b310532962f3>", line 52, in controlHVAC
+    GPIO.output(heat_pin ,0)
+RuntimeError: The GPIO channel has not been set up as an OUTPUT
+2015-08-08 22:14:35,653 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-10-b310532962f3>", line 52, in controlHVAC
+    GPIO.output(heat_pin ,0)
+RuntimeError: The GPIO channel has not been set up as an OUTPUT
+2015-08-08 22:14:40,718 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-11-554c2cea54ec>", line 16, in <module>
+    time.sleep(refreshCycle) # delay for 20 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-08 22:14:40,718 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-11-554c2cea54ec>", line 16, in <module>
+    time.sleep(refreshCycle) # delay for 20 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-08 22:14:40,748 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-08 22:14:40,748 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-08 22:14:40,795 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-08 22:14:40,795 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-08 22:15:17,272 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-08 22:15:17,365 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-08 22:17:15,549 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-4-554c2cea54ec>", line 16, in <module>
+    time.sleep(refreshCycle) # delay for 20 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-08 22:17:15,575 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-08 22:17:15,605 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-08 22:17:39,717 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-3-b310532962f3>", line 52, in controlHVAC
+    GPIO.output(heat_pin ,0)
+RuntimeError: The GPIO channel has not been set up as an OUTPUT
+2015-08-08 22:18:00,386 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-3-b310532962f3>", line 52, in controlHVAC
+    GPIO.output(heat_pin ,0)
+RuntimeError: The GPIO channel has not been set up as an OUTPUT
+2015-08-08 22:18:01,666 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-5-4053d8031f1b>", line 19, in <module>
+    time.sleep(refreshCycle) # delay for 20 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-08 22:18:01,695 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-08 22:18:01,738 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-08 22:18:31,511 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-08 22:18:31,545 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-08 22:21:00,805 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-3-cf6e4e57466a>", line 54, in controlHVAC
+    if coolingHwStatus != 'On':
+UnboundLocalError: local variable 'coolingHwStatus' referenced before assignment
+2015-08-08 22:21:21,534 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-3-cf6e4e57466a>", line 54, in controlHVAC
+    if coolingHwStatus != 'On':
+UnboundLocalError: local variable 'coolingHwStatus' referenced before assignment
+2015-08-08 22:21:22,754 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-4-4053d8031f1b>", line 19, in <module>
+    time.sleep(refreshCycle) # delay for 20 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-08 22:21:22,777 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-08 22:21:22,799 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-08 22:21:40,144 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-3-cf6e4e57466a>", line 49, in controlHVAC
+    GPIO.output(heat_pin ,0)
+RuntimeError: The GPIO channel has not been set up as an OUTPUT
+2015-08-08 22:21:46,300 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-5-cb9a1c118013>", line 19, in <module>
+    time.sleep(refreshCycle) # delay for 20 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-08 22:21:46,323 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-08 22:21:46,375 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-08 22:21:55,864 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-08 22:21:55,864 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-08 22:21:55,909 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-08 22:21:55,909 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-08 22:22:01,797 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-3-cf6e4e57466a>", line 54, in controlHVAC
+    if coolingHwStatus != 'On':
+UnboundLocalError: local variable 'coolingHwStatus' referenced before assignment
+2015-08-08 22:22:01,797 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-3-cf6e4e57466a>", line 54, in controlHVAC
+    if coolingHwStatus != 'On':
+UnboundLocalError: local variable 'coolingHwStatus' referenced before assignment
+2015-08-08 22:22:07,076 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-7-cb9a1c118013>", line 19, in <module>
+    time.sleep(refreshCycle) # delay for 20 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-08 22:22:07,076 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-7-cb9a1c118013>", line 19, in <module>
+    time.sleep(refreshCycle) # delay for 20 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-08 22:22:07,105 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-08 22:22:07,105 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-08 22:22:07,127 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-08 22:22:07,127 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-08 22:24:39,600 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-3-cf6e4e57466a>", line 49, in controlHVAC
+    GPIO.output(heat_pin ,0)
+RuntimeError: The GPIO channel has not been set up as an OUTPUT
+2015-08-08 22:24:39,600 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-3-cf6e4e57466a>", line 49, in controlHVAC
+    GPIO.output(heat_pin ,0)
+RuntimeError: The GPIO channel has not been set up as an OUTPUT
+2015-08-08 22:24:43,874 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-8-9126312b46d5>", line 19, in <module>
+    time.sleep(refreshCycle) # delay for 20 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-08 22:24:43,874 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-8-9126312b46d5>", line 19, in <module>
+    time.sleep(refreshCycle) # delay for 20 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-08 22:24:43,908 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-08 22:24:43,908 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-08 22:24:43,976 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-08 22:24:43,976 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-08 22:24:51,941 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-08 22:24:51,941 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-08 22:24:51,941 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-08 22:24:51,982 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-08 22:24:51,982 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-08 22:24:51,982 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-08 22:25:43,709 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-08 22:25:43,709 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-08 22:25:43,709 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-08 22:25:43,709 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-08 22:25:43,784 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-08 22:25:43,784 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-08 22:25:43,784 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-08 22:25:43,784 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-08 22:25:50,367 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-3-cf6e4e57466a>", line 54, in controlHVAC
+    if coolingHwStatus != 'On':
+UnboundLocalError: local variable 'coolingHwStatus' referenced before assignment
+2015-08-08 22:25:50,367 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-3-cf6e4e57466a>", line 54, in controlHVAC
+    if coolingHwStatus != 'On':
+UnboundLocalError: local variable 'coolingHwStatus' referenced before assignment
+2015-08-08 22:25:50,367 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-3-cf6e4e57466a>", line 54, in controlHVAC
+    if coolingHwStatus != 'On':
+UnboundLocalError: local variable 'coolingHwStatus' referenced before assignment
+2015-08-08 22:25:50,367 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-3-cf6e4e57466a>", line 54, in controlHVAC
+    if coolingHwStatus != 'On':
+UnboundLocalError: local variable 'coolingHwStatus' referenced before assignment
+2015-08-08 22:25:56,352 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-11-9126312b46d5>", line 19, in <module>
+    time.sleep(refreshCycle) # delay for 20 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-08 22:25:56,352 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-11-9126312b46d5>", line 19, in <module>
+    time.sleep(refreshCycle) # delay for 20 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-08 22:25:56,352 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-11-9126312b46d5>", line 19, in <module>
+    time.sleep(refreshCycle) # delay for 20 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-08 22:25:56,352 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-11-9126312b46d5>", line 19, in <module>
+    time.sleep(refreshCycle) # delay for 20 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-08 22:25:56,385 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-08 22:25:56,385 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-08 22:25:56,385 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-08 22:25:56,385 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-08 22:25:56,409 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-08 22:25:56,409 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-08 22:25:56,409 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-08 22:25:56,409 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-08 22:30:17,617 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-12-508330918af1>", line 52, in controlHVAC
+    GPIO.output(heat_pin ,0)
+RuntimeError: The GPIO channel has not been set up as an OUTPUT
+2015-08-08 22:30:17,617 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-12-508330918af1>", line 52, in controlHVAC
+    GPIO.output(heat_pin ,0)
+RuntimeError: The GPIO channel has not been set up as an OUTPUT
+2015-08-08 22:30:17,617 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-12-508330918af1>", line 52, in controlHVAC
+    GPIO.output(heat_pin ,0)
+RuntimeError: The GPIO channel has not been set up as an OUTPUT
+2015-08-08 22:30:17,617 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-12-508330918af1>", line 52, in controlHVAC
+    GPIO.output(heat_pin ,0)
+RuntimeError: The GPIO channel has not been set up as an OUTPUT
+2015-08-08 22:30:23,537 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-13-554c2cea54ec>", line 16, in <module>
+    time.sleep(refreshCycle) # delay for 20 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-08 22:30:23,537 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-13-554c2cea54ec>", line 16, in <module>
+    time.sleep(refreshCycle) # delay for 20 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-08 22:30:23,537 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-13-554c2cea54ec>", line 16, in <module>
+    time.sleep(refreshCycle) # delay for 20 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-08 22:30:23,537 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-13-554c2cea54ec>", line 16, in <module>
+    time.sleep(refreshCycle) # delay for 20 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-08 22:30:23,577 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-08 22:30:23,577 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-08 22:30:23,577 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-08 22:30:23,577 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-08 22:30:23,626 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-08 22:30:23,626 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-08 22:30:23,626 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-08 22:30:23,626 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-08 22:30:30,302 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-08 22:30:30,302 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-08 22:30:30,302 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-08 22:30:30,302 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-08 22:30:30,302 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-08 22:30:30,343 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-08 22:30:30,343 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-08 22:30:30,343 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-08 22:30:30,343 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-08 22:30:30,343 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-09 00:03:01,692 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-16-554c2cea54ec>", line 16, in <module>
+    time.sleep(refreshCycle) # delay for 20 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-09 00:03:01,692 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-16-554c2cea54ec>", line 16, in <module>
+    time.sleep(refreshCycle) # delay for 20 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-09 00:03:01,692 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-16-554c2cea54ec>", line 16, in <module>
+    time.sleep(refreshCycle) # delay for 20 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-09 00:03:01,692 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-16-554c2cea54ec>", line 16, in <module>
+    time.sleep(refreshCycle) # delay for 20 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-09 00:03:01,692 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-16-554c2cea54ec>", line 16, in <module>
+    time.sleep(refreshCycle) # delay for 20 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-09 00:03:01,725 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-09 00:03:01,725 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-09 00:03:01,725 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-09 00:03:01,725 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-09 00:03:01,725 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-09 00:03:01,755 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-09 00:03:01,755 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-09 00:03:01,755 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-09 00:03:01,755 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-09 00:03:01,755 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-09 00:03:28,708 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-09 00:03:28,751 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-09 00:47:18,980 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-09 00:47:18,992 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-10 18:16:56,021 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-10 18:16:56,048 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-10 21:18:09,564 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-10 21:18:09,583 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-10 22:54:47,818 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-10 22:54:47,827 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-10 23:01:44,387 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-10 23:01:44,487 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-10 23:09:31,001 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-10 23:09:31,106 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-10 23:20:00,169 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-4-7924010d5272>", line 16, in <module>
+    time.sleep(refreshCycle) # delay for 20 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-10 23:20:00,203 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-10 23:20:00,224 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-10 23:21:47,473 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-10 23:21:47,473 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-10 23:21:47,517 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-10 23:21:47,517 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-10 23:27:54,774 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-9-2e220e6575fa>", line 16, in <module>
+    time.sleep(refreshCycle) # delay for 10 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-10 23:27:54,774 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-9-2e220e6575fa>", line 16, in <module>
+    time.sleep(refreshCycle) # delay for 10 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-10 23:27:54,809 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-10 23:27:54,809 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-10 23:27:54,831 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-10 23:27:54,831 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-10 23:28:13,740 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-11-b9c2da42fec9>", line 116, in controlHVAC
+    shutOffHVAC()
+  File "<ipython-input-11-b9c2da42fec9>", line 123, in shutOffHVAC
+    GPIO.output(heat_pin ,0)
+RuntimeError: The GPIO channel has not been set up as an OUTPUT
+2015-08-10 23:28:13,740 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware controlHVAC
+Traceback (most recent call last):
+  File "<ipython-input-11-b9c2da42fec9>", line 116, in controlHVAC
+    shutOffHVAC()
+  File "<ipython-input-11-b9c2da42fec9>", line 123, in shutOffHVAC
+    GPIO.output(heat_pin ,0)
+RuntimeError: The GPIO channel has not been set up as an OUTPUT
+2015-08-10 23:28:21,213 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-12-2e220e6575fa>", line 16, in <module>
+    time.sleep(refreshCycle) # delay for 10 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-10 23:28:21,213 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-12-2e220e6575fa>", line 16, in <module>
+    time.sleep(refreshCycle) # delay for 10 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-10 23:28:21,258 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-10 23:28:21,258 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-10 23:28:21,321 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-10 23:28:21,321 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-10 23:28:32,807 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-10 23:28:32,807 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-10 23:28:32,807 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-10 23:28:32,863 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-10 23:28:32,863 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-10 23:28:32,863 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-10 23:32:08,716 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-16-2e220e6575fa>", line 16, in <module>
+    time.sleep(refreshCycle) # delay for 10 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-10 23:32:08,716 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-16-2e220e6575fa>", line 16, in <module>
+    time.sleep(refreshCycle) # delay for 10 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-10 23:32:08,716 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-16-2e220e6575fa>", line 16, in <module>
+    time.sleep(refreshCycle) # delay for 10 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-10 23:32:08,752 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-10 23:32:08,752 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-10 23:32:08,752 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-10 23:32:08,775 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-10 23:32:08,775 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-10 23:32:08,775 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-10 23:35:11,042 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-10 23:35:11,093 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-11 01:17:52,276 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-4-2e220e6575fa>", line 16, in <module>
+    time.sleep(refreshCycle) # delay for 10 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-11 01:17:52,299 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-11 01:17:52,322 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-11 01:21:35,318 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-11 01:21:35,389 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-11 01:23:23,297 - ThermoHardware - ERROR - Exception Occurred in ThermoHardware main loop
+Traceback (most recent call last):
+  File "<ipython-input-4-2e220e6575fa>", line 16, in <module>
+    time.sleep(refreshCycle) # delay for 10 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+KeyboardInterrupt
+2015-08-11 01:23:23,332 - ThermoHardware - INFO - 400: Cleanup GPIO
+2015-08-11 01:23:23,352 - ThermoHardware - INFO - 401: Thermostat Hardware is ending
+2015-08-11 01:25:43,742 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-11 01:25:43,766 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-12 09:18:09,069 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-12 09:18:09,090 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-13 21:58:39,180 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-13 21:58:39,223 - ThermoHardware - INFO - 101: Configuration complete
+2015-08-19 09:21:32,003 - ThermoHardware - INFO - 100: Thermostat Hardware is starting
+2015-08-19 09:21:32,033 - ThermoHardware - INFO - 101: Configuration complete
