@@ -172,7 +172,7 @@ def updateForecastData(queryset):
 
 def getWeatherForecast():
     #get the current conditions
-    apiId = '4d5dbde505034b47'
+    apiId = '<your app id goes here>'
     state= 'TX'
     city = 'Frisco'
     import urllib2
