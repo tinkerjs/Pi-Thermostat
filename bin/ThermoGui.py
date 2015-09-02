@@ -35,12 +35,25 @@ import pytz
 from pytz import timezone
 from datetime import datetime
 import ThermoData
+import logging
+
 
 
 # ### Configuration
 # -  Some UI specific configuration items and names to create. 
 
 # In[2]:
+
+#setup logging
+logDir = os.path.join('/','thermostat','logs')
+thermoGuiLogger = logging.getLogger('ThermoGui')
+fhandler = logging.FileHandler(filename=os.path.join(logDir,'thermogui.log'), mode='a')
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+fhandler.setFormatter(formatter)
+thermoGuiLogger.addHandler(fhandler)
+thermoGuiLogger.setLevel(logging.INFO)
+
+thermoGuiLogger.info('100: Thermostat Gui is starting')
 
 central = timezone('US/Central')
 
@@ -50,7 +63,7 @@ windowWidth = 320
 
 # ### The UI code
 
-# In[12]:
+# In[3]:
 
 ####- The main elements (root window, title and frames)
 rootWindow = Tk()
@@ -272,6 +285,8 @@ gridStuff()
 
 
 rootWindow.mainloop()
+
+thermoGuiLogger.info('200: Thermostat Gui is stopping')
 
 
 # ###Dev Testing
