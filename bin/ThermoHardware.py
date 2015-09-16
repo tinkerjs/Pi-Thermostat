@@ -11,16 +11,17 @@
 # - Read sensor data and provide to database
 # - Read database data
 # - Understand logic for controlling hardware
+# - can be used as cmd line utility and as service with loop. 
 # 
 # ## Issues
-#  - TBD
+#  - It seems like this uses more memory than it needs to. Need to investigate making it more efficient. 
 # 
 # ## The Code and methods
 # - The following section contains the code that is used to make up the hardware interface. It is organized into sections that define configuration, modules that need to be imported and its own modules. 
 # 
 # ### Libraries to import
 
-# In[1]:
+# In[3]:
 
 import ThermoData #a module for accessing data
 import RPi.GPIO as GPIO #import the RPI GPIO library 
@@ -28,12 +29,13 @@ import Adafruit_DHT # to read the temp from the AM2302
 import time # to create delays and get time information
 import os
 import logging
+import sys
 
 
 # ### Configuration
 # - Here we will setup the GPIO configuration for the Raspberry PI, define the pins and other hardware specific configuration tasks.
 
-# In[2]:
+# In[ ]:
 
 #setup logging
 logDir = os.path.join('/','thermostat','logs')
@@ -66,13 +68,14 @@ coolingHwStatus = ''
 heatingHwStatus = ''
 fanHwStatus = ''
 offHwStatus = ''
+refreshCycle = 10
 
 ThermoHardwareLogger.info('101: Configuration complete')
 
 
 # ### The hardware code
 
-# In[3]:
+# In[ ]:
 
 def getHwInfo():
     try: 
@@ -106,18 +109,19 @@ def getDBInfo():
         ThermoHardwareLogger.exception('Exception Occurred in ThermoHardware getDBInfo')
                                                            
 def controlHVAC(desiredTemp,hwTemp,fanMode='O'):
-    global coolingHwStatus 
-    global heatingHwStatus
-    global fanHwStatus
-    global offHwStatus
-    
-    
-    #print('coolingHwStatus: ', coolingHwStatus)
-    #print('heatingHwStatus: ', heatingHwStatus)
-    #print('fanHwStatus: ', fanHwStatus)
-    #print('offHwStatus: ', offHwStatus)
-    
     try:
+        global coolingHwStatus 
+        global heatingHwStatus
+        global fanHwStatus
+        global offHwStatus
+
+
+        #print('coolingHwStatus: ', coolingHwStatus)
+        #print('heatingHwStatus: ', heatingHwStatus)
+        #print('fanHwStatus: ', fanHwStatus)
+        #print('offHwStatus: ', offHwStatus)
+    
+    
         if fanMode =='H': #heating
             fanHwStatus = 'Off'
             offHwStatus = 'Off'
@@ -196,40 +200,73 @@ def controlHVAC(desiredTemp,hwTemp,fanMode='O'):
         ThermoHardwareLogger.exception('Exception Occurred in ThermoHardware controlHVAC')
         
 def shutOffHVAC():
-    GPIO.output(heat_pin ,0)
-    GPIO.output(cool_pin ,0)
-    GPIO.output(fan_pin ,0)
+    try:
+        GPIO.output(heat_pin ,0)
+        GPIO.output(cool_pin ,0)
+        GPIO.output(fan_pin ,0)
+        
+
+    except:
+       ThermoHardwareLogger.exception('Exception Occurred in ThermoHardware shutOffHVAC')
 
 
-# In[4]:
+# In[2]:
 
-try:
-    refreshCycle = 10
-    while True: 
+def mainHardwareLoop():
+    ThermoHardwareLogger.info('200: Starting as loop')
+    while True:
+        try:
+            hwHumidity, hwTemp = getHwInfo()
+            fanMode, desTemp = getDBInfo()
+            fanMode = str(fanMode)
+            writeTempHumid(hwTemp,hwHumidity)
+            #print(desTemp,hwTemp,fanMode)
+            controlHVAC(desTemp,hwTemp,fanMode)
+
+            #print 'Humidity:', hwHumidity
+            #print 'Temp:', hwTemp
+            #print 'Fan Mode:',fanMode.encode("ascii")
+            #print 'Desired Temp:', desTemp
+
+            time.sleep(refreshCycle) # delay for 10 sec to try and avoid db locks. May be able to handle this in the ThermoData module. 
+        except:
+            ThermoHardwareLogger.exception('Exception Occurred executing the main loop')
+            ThermoHardwareLogger.info('400: Cleanup GPIO')
+            GPIO.cleanup()
+            ThermoHardwareLogger.info('401: Thermostat Hardware is ending')
+            break
+            
+def mainHardwareIteration():
+    try:
         hwHumidity, hwTemp = getHwInfo()
         fanMode, desTemp = getDBInfo()
         fanMode = str(fanMode)
         writeTempHumid(hwTemp,hwHumidity)
         #print(desTemp,hwTemp,fanMode)
         controlHVAC(desTemp,hwTemp,fanMode)
+
+    except:
+        ThermoHardwareLogger.exception('Exception Occurred executing the main loop')
+        ThermoHardwareLogger.info('400: Cleanup GPIO')
+        GPIO.cleanup()
+        ThermoHardwareLogger.info('401: Thermostat Hardware is ending')
         
-        #print 'Humidity:', hwHumidity
-        #print 'Temp:', hwTemp
-        #print 'Fan Mode:',fanMode.encode("ascii")
-        #print 'Desired Temp:', desTemp
-        
-        time.sleep(refreshCycle) # delay for 10 sec to try and avoid db locks. May be able to handle this in the ThermoData module.
+if __name__ == '__main__':
+    args = sys.argv[1:]
+    if 'asLoop' in args:
+        mainHardwareLoop()
+    if 'asIteration' in args:
+        mainHardwareIteration()
+    else:
+        print'''
+        ThermoHardware cmd line interface can be called with 
+        the following options using sudo:
+        - sudo python ThermoHardware.py asLoop - to run the hardware module as an infinite loop. Be warned this has a memory leak.  
+        - - sudo python ThermoHardware.py asIteration - to run the hardware module as an a single iteration.
+        '''
 
-except:
-    ThermoHardwareLogger.exception('Exception Occurred in ThermoHardware main loop')
 
-finally:
-    ThermoHardwareLogger.info('400: Cleanup GPIO')
-    GPIO.cleanup()
-    ThermoHardwareLogger.info('401: Thermostat Hardware is ending')
-
-
-# ###Development
+# ### Development
 
 # In[ ]:
 
@@ -255,6 +292,6 @@ finally:
 
 # In[ ]:
 
-s = 'started'
-'start' in s
+#s = 'started'
+#'start' in s
 
