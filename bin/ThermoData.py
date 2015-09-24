@@ -4,7 +4,7 @@
 # # Thermostat Data Module
 # 
 # ## Description
-# - The purpose of this notebook is to support a database interface to control HVAC equipment also known as a thermostat. This runs on a raspberry pi b+ using DJANGO.This will be the code that make up the database interface for the thermostat application. 
+# - The purpose of this notebook is to support a database interface to control HVAC equipment using a custom built thermostat. This runs on a raspberry pi 2 using DJANGO. This will be the code that handles the database interface for the thermostat application. 
 # 
 # 
 # ## The Build
@@ -47,8 +47,8 @@
 # 
 # - Wifi
 #     - This PI uses an Airlink101 Wireless N USB adapter. To configure follow these steps:
-#         - Confogire the adapter using the GUI config tool in the raspbian os.
-#         - Add "scan_ssid=1" to the /etc/wpa_supplicant/wpa_supplicant.conf file in the "network" section
+#         - Configure the adapter using the GUI config tool in the raspbian os.
+#         - Add "scan_ssid=1" to the /etc/wpa_supplicant/wpa_supplicant.conf file in the "network" section if your SSID is not broadcast. 
 # 
 # ## Features
 # - Allow for methods to add, update and retrieve data.
@@ -64,7 +64,7 @@
 # ## 5. The Code and methods
 # - The following section contains the code that is used to make up the data interface. It is organized into sections that define configuration, modules that need to be imported and its own modules. 
 # 
-# ### Libraries to import
+# ### Modules to import
 
 # In[ ]:
 
@@ -75,22 +75,29 @@ import django
 from django.utils import timezone as djTimeZone
 from pytz import timezone as pytzTimeZone 
 import datetime
+import urllib2
+import json
 
 sys.path.append('/thermostat/web/code/') #so we can import django modules  
 
 
 #these are the models that are defined for the database
 os.chdir('/thermostat/web/code/')
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'thermostat.settings') ##this one is so critical. Use this rather than exporting it from the shell
+##this one is so critical. Use this rather than exporting it from the shell
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'thermostat.settings') 
+
+# DJANGO needs to be setup in order to be able to use the applications files. 
+# It needs to be called from inside the app directory where manage.py lives 
+# '/thermostat/web/code/'.
 django.setup()
 
+#these are the DJANGO data models that were created for the project. 
 from ThermoApp.models import RealtimeData as RTdata
 from ThermoApp.models import ForecastData as FCdata
 from ThermoApp.models import HistoricData as HSdata
 
 
 # ### Configuration
-# -  DJANGO needs to be setup in order to be able to use the applications files. It needs to be called from inside the app directory where manage.py lives '/thermostat/web/code/'.
 
 # In[ ]:
 
@@ -113,7 +120,7 @@ thermoDataLogger.info('101: Configuration is complete')
 # ### Work with  Data
 # - So far these methods dont really do anything beyond the DJANGO native model API. At some point these will be customized to offer validation and error handling for the application specific needs.
 # 
-# ####Get real time data
+# #### Get real time data
 # - this will only return the first and assumedly only record in the real time table.  
 
 # In[ ]:
@@ -139,7 +146,7 @@ def updateRealTimeData(queryset):
         thermoDataLogger.exception('Exception Occurred in ThermoData updateRealtimeData().')
 
 
-# ####Get Forecast Data
+# #### Get Forecast Data
 # - this will retreive all the records from the forecast data table.  
 
 # In[ ]:
@@ -152,7 +159,7 @@ def getForecastData():
         thermoDataLogger.exception('Exception Occurred in ThermoData getForecastData()')
 
 
-# ####Update Forecast Data
+# #### Update Forecast Data
 # - this will update all the records from the forecast data table.  
 
 # In[ ]:
@@ -165,106 +172,103 @@ def updateForecastData(queryset):
         thermoDataLogger.exception('Exception Occurred in ThermoData updateForecastData().')
 
 
-# ####Get the weather forceast and information
+# #### Get the weather forceast and information
 # This will be used to make webservice calls to weather underground to get weather data and store in the database to be used  throughout the application. 
 
-# In[ ]:
+# In[1]:
 
 def getWeatherForecast():
-    #get the current conditions
-    apiId = '<your app id goes here>'
-    state= 'TX'
-    city = 'Frisco'
-    import urllib2
-    import json
-    currCondFile = urllib2.urlopen('http://api.wunderground.com/api/{2}/geolookup/conditions/q/{0}/{1}.json'.format(state,city,apiId))
-    currCondJson = currCondFile.read()
-    parsedCurrCondJson = json.loads(currCondJson)
-    
-    #current conditions by element
-    currPrecipitation = parsedCurrCondJson['current_observation']['precip_today_string']
-    currLocation = parsedCurrCondJson['location']['city']
-    currTemp_f = parsedCurrCondJson['current_observation']['temp_f']
-    currRealtiveHumidity = parsedCurrCondJson['current_observation']['relative_humidity']
-    currCondFile.close()
-        
-    #Get todays forecast
-    tdForecastFile = urllib2.urlopen('http://api.wunderground.com/api/4d5dbde505034b47/forecast/q/TX/Frisco.json')
-    tdForecastJson = tdForecastFile.read()
-    tdForecastJsonParsed = json.loads(tdForecastJson)
-    #uses simple forecast call to get data for the next 4 days
-    fcList = []
-    for day in tdForecastJsonParsed['forecast']['simpleforecast']['forecastday']:
-        fcConditions = day['conditions']
-        fcDay = day['date']['weekday_short']
-        fcDayHigh = day['high']['fahrenheit']
-        fcDayLow = day['low']['fahrenheit']
-        fcList.append(fcDay.encode('ascii') + ' ' + fcDayHigh.encode('ascii') +'/'+ fcDayLow.encode('ascii') + ' ' + fcConditions.encode('ascii'))
-    
-    #print '\n'.join(fcList)
-    
-    tdForecastFile.close()
-    
-    fcQuery = getForecastData()
-    fcQuery.fc_outsidetemp = currTemp_f
-    fcQuery.fc_outsidehumidity = currRealtiveHumidity.strip('%')
-    fcQuery.fc_4dforecast = '{0}'.format('\n'.join(fcList))
-    updateForecastData(fcQuery)
-   
-    return parsedCurrCondJson
-    
-#tdForecastJsonParsed = getWeatherForecast()
+    try: 
+        #get the current conditions
+        apiId = '4d5dbde505034b47'
+        state= 'TX'
+        city = 'Frisco'
+        currCondFile = urllib2.urlopen('http://api.wunderground.com/api/{2}/geolookup/conditions/q/{0}/{1}.json'.format(state,city,apiId))
+        currCondJson = currCondFile.read()
+        parsedCurrCondJson = json.loads(currCondJson)
+
+        #current conditions by element
+        currPrecipitation = parsedCurrCondJson['current_observation']['precip_today_string']
+        currLocation = parsedCurrCondJson['location']['city']
+        currTemp_f = parsedCurrCondJson['current_observation']['temp_f']
+        currRealtiveHumidity = parsedCurrCondJson['current_observation']['relative_humidity']
+        currCondFile.close()
+
+        #Get todays forecast
+        tdForecastFile = urllib2.urlopen('http://api.wunderground.com/api/4d5dbde505034b47/forecast/q/TX/Frisco.json')
+        tdForecastJson = tdForecastFile.read()
+        tdForecastJsonParsed = json.loads(tdForecastJson)
+        #uses simple forecast call to get data for the next 4 days
+        fcList = []
+        for day in tdForecastJsonParsed['forecast']['simpleforecast']['forecastday']:
+            fcConditions = day['conditions']
+            fcDay = day['date']['weekday_short']
+            fcDayHigh = day['high']['fahrenheit']
+            fcDayLow = day['low']['fahrenheit']
+            fcList.append(fcDay.encode('ascii') + ' ' + fcDayHigh.encode('ascii') +'/'+ fcDayLow.encode('ascii') + ' ' + fcConditions.encode('ascii'))
+
+        #print '\n'.join(fcList)
+
+        tdForecastFile.close()
+
+        fcQuery = getForecastData()
+        fcQuery.fc_outsidetemp = currTemp_f
+        fcQuery.fc_outsidehumidity = currRealtiveHumidity.strip('%')
+        fcQuery.fc_4dforecast = '{0}'.format('\n'.join(fcList))
+        updateForecastData(fcQuery)
+
+        return parsedCurrCondJson
+
+    #tdForecastJsonParsed = getWeatherForecast()
+    except:
+         thermoDataLogger.exception('Exception Occurred in ThermoData getWeatherForecast().')
 
 
-# ####Update events to the DB 
+# #### Update events to the DB 
 # - this will create a hardware event entry and update the end time of the event when it has completed. Event descriptions can be:
 #     - coolingStart, coolingStop - when the cooling system is turned on/off
 #     - heatingStart, heatingStop - when the heating system is turned on/off
 #     - fanStart, fanStop - when the fan is turned on/off
 
-# In[ ]:
+# In[3]:
 
 def updateHwEvent(eventDesc):
-    if 'Start' in eventDesc:
-        #print 'event start: %s' %eventDesc
-        hsRtQuery = getRealtimeData()
-        hsFcQuery = getForecastData()
-        eventStartTime = djTimeZone.now()
-        startEventDB = HSdata(hs_eventdesc = eventDesc,
-                              hs_eventdatetime = eventStartTime, 
-                              hs_currenttemp = hsRtQuery.rt_currenttemp, 
-                              hs_destemp = hsRtQuery.rt_destemp, 
-                              hs_humidity = hsRtQuery.rt_humidity, 
-                              hs_fanmode = hsRtQuery.rt_fanmode, 
-                              hs_outsidetemp = hsFcQuery.fc_outsidetemp, 
-                              hs_outsidehumidity = hsFcQuery.fc_outsidehumidity, 
-                              hs_forecast = hsFcQuery.fc_4dforecast)
-        startEventDB.save()
-    if 'Stop' in eventDesc:
-        #print 'event stop: %s' %eventDesc
-        hsRtQuery = getRealtimeData()
-        hsFcQuery = getForecastData()
-        eventStopTime = djTimeZone.now()
-        stopEventDB = HSdata(hs_eventdesc = eventDesc,
-                              hs_eventdatetime = eventStopTime, 
-                              hs_currenttemp = hsRtQuery.rt_currenttemp, 
-                              hs_destemp = hsRtQuery.rt_destemp, 
-                              hs_humidity = hsRtQuery.rt_humidity, 
-                              hs_fanmode = hsRtQuery.rt_fanmode, 
-                              hs_outsidetemp = hsFcQuery.fc_outsidetemp, 
-                              hs_outsidehumidity = hsFcQuery.fc_outsidehumidity, 
-                              hs_forecast = hsFcQuery.fc_4dforecast)
-        stopEventDB.save()
-
-
-# In[ ]:
-
-#updateHwEvent('Fan Start')
-
-
-# In[ ]:
-
-
+    hsLastData = HSdata.objects.last()
+    status = hsLastData.hs_eventdesc
+        
+    if 'Start' in eventDesc: 
+        if 'Stop' in status: #only write the record to the db if it is currently stopped
+            #print 'event start: %s' %eventDesc
+            hsRtQuery = getRealtimeData()
+            hsFcQuery = getForecastData()
+            eventStartTime = djTimeZone.now()
+            startEventDB = HSdata(hs_eventdesc = eventDesc,
+                                  hs_eventdatetime = eventStartTime, 
+                                  hs_currenttemp = hsRtQuery.rt_currenttemp, 
+                                  hs_destemp = hsRtQuery.rt_destemp, 
+                                  hs_humidity = hsRtQuery.rt_humidity, 
+                                  hs_fanmode = hsRtQuery.rt_fanmode, 
+                                  hs_outsidetemp = hsFcQuery.fc_outsidetemp, 
+                                  hs_outsidehumidity = hsFcQuery.fc_outsidehumidity, 
+                                  hs_forecast = hsFcQuery.fc_4dforecast)
+            startEventDB.save()
+    
+    if 'Stop' in eventDesc: 
+        if 'Start' in status: #only write the record to the DB if it is currently started
+            #print 'event stop: %s' %eventDesc
+            hsRtQuery = getRealtimeData()
+            hsFcQuery = getForecastData()
+            eventStopTime = djTimeZone.now()
+            stopEventDB = HSdata(hs_eventdesc = eventDesc,
+                                  hs_eventdatetime = eventStopTime, 
+                                  hs_currenttemp = hsRtQuery.rt_currenttemp, 
+                                  hs_destemp = hsRtQuery.rt_destemp, 
+                                  hs_humidity = hsRtQuery.rt_humidity, 
+                                  hs_fanmode = hsRtQuery.rt_fanmode, 
+                                  hs_outsidetemp = hsFcQuery.fc_outsidetemp, 
+                                  hs_outsidehumidity = hsFcQuery.fc_outsidehumidity, 
+                                  hs_forecast = hsFcQuery.fc_4dforecast)
+            stopEventDB.save()
 
 
 # #### Command line application suppot and CRON
@@ -275,7 +279,7 @@ def updateHwEvent(eventDesc):
 if __name__ == '__main__':
     args = sys.argv[1:]
     if 'getWeatherForecast' in args:
-        print 'Getting weather forecast'
+        print('Getting weather forecast')
         getWeatherForecast()
     else:
         print '''
@@ -285,27 +289,4 @@ if __name__ == '__main__':
           latest forecast data from weather underground. 
         - more to come...
         '''
-
-
-# ###Development and Testing
-
-# In[ ]:
-
-#rtQuery = getRealtimeData()
-#print(rtQuery.rt_currenttemp)
-
-
-# In[ ]:
-
-#rtQuery.rt_currenttemp = 27.50
-
-
-# In[ ]:
-
-#updateRealTimeData(rtQuery)
-
-
-# In[ ]:
-
-#timezone.now()
 
